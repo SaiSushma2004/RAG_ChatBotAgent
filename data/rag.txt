@@ -1,0 +1,5 @@
+Retrieval Augmented Generation (RAG) is an AI architecture that combines
+information retrieval with large language models. It retrieves relevant
+documents from a knowledge base and then generates answers using a language
+model based on the retrieved context. RAG improves accuracy and reduces
+hallucinations by grounding responses in real data.

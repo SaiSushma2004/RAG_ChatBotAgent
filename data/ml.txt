@@ -1,0 +1,2 @@
+Machine Learning allows systems to learn from data.
+Supervised and unsupervised learning are common techniques.
