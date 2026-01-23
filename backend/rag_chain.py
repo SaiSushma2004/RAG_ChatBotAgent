@@ -10,7 +10,10 @@ load_dotenv()
 
 def ask_question(question: str):
     vectorstore = get_vectorstore()
-
+    retriever = vectorstore.as_retriever(
+        search_type="similarity",
+        search_kwargs={"k":3}
+    )
     llm = ChatGroq(
     groq_api_key=os.getenv("GROQ_API_KEY"),
     model_name="llama-3.1-8b-instant",
@@ -53,4 +56,5 @@ Answer:
     result = qa_chain({"question": question})
 
 
-    return result
+    return reponse["result"]
+
