@@ -7,3 +7,4 @@ python-dotenv
 streamlit==1.30.0
 faiss-cpu
 requests
+langchain-huggingface
