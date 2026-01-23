@@ -1,5 +1,5 @@
 from langchain_groq import ChatGroq
-from langchain.chains.conversationalRetrievalChain import ConversationalRetrievalChain
+from langchain.chains import RetrievalQA
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 from backend.vectorstore import get_vectorstore
@@ -44,14 +44,13 @@ Answer:
 """
     )
 
-    qa_chain = ConversationalRetrievalChain.from_llm(
+    qa = RetrievalQA.from_chain_type(
         llm=llm,
-        retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),
-         memory=memory,
+        retriever=retriever,
         return_source_documents=True,
-        combine_docs_chain_kwargs={"prompt": prompt}
     )
 
     result = qa_chain({"question": question})
+
 
     return result
