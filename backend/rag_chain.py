@@ -1,25 +1,28 @@
+import os
+from dotenv import load_dotenv
+
 from langchain_groq import ChatGroq
 from langchain.chains import RetrievalQA
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
-from backend.vectorstore import get_vectorstore
-import os
-from dotenv import load_dotenv
+
+from .vectorstore import get_vectorstore  # ✅ FIXED IMPORT
 
 load_dotenv()
 
 def ask_question(question: str):
     vectorstore = get_vectorstore()
+
     retriever = vectorstore.as_retriever(
         search_type="similarity",
-        search_kwargs={"k":3}
+        search_kwargs={"k": 3}
     )
-    llm = ChatGroq(
-    groq_api_key=os.getenv("GROQ_API_KEY"),
-    model_name="llama-3.1-8b-instant",
 
-    temperature=0
-)
+    llm = ChatGroq(
+        groq_api_key=os.getenv("GROQ_API_KEY"),
+        model_name="llama-3.1-8b-instant",
+        temperature=0
+    )
 
     memory = ConversationBufferMemory(
         memory_key="chat_history",
@@ -27,7 +30,6 @@ def ask_question(question: str):
         output_key="answer"
     )
 
-      # ✅ CUSTOM PROMPT
     prompt = PromptTemplate(
         input_variables=["context", "question"],
         template="""
@@ -49,12 +51,12 @@ Answer:
 
     qa = RetrievalQA.from_chain_type(
         llm=llm,
+        chain_type="stuff",
         retriever=retriever,
-        return_source_documents=True,
+        chain_type_kwargs={"prompt": prompt},
+        return_source_documents=False
     )
 
-    result = qa_chain({"question": question})
+    result = qa({"query": question})  # ✅ FIXED
 
-
-    return reponse["result"]
-
+    return result["result"]
