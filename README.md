@@ -107,3 +107,10 @@ Model switching support
 🙌 Conclusion
 
 This project demonstrates end-to-end development and cloud deployment of a Generative AI RAG system, showcasing practical skills in LLMs, retrieval systems, and cloud deployment.
+
+👩‍💻 Author
+
+M.Sai Sushma 
+B.Tech CSE (AI & ML)
+AI | Machine Learning | Cloud Deployment
+🔗 LinkedIn: https://www.linkedin.com/in/sai-sushma-maruboyina-382b34334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
