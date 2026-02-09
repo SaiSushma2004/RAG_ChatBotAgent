@@ -71,7 +71,7 @@ App builds automatically and becomes live 🎉
 🌐 Live Application Link
 
 🔗 RAG Chatbot (Streamlit Cloud):
-https://ragchatbotagent-faxidgsxcv5rxznkcp7q.streamlit.app
+https://ragchatbotagent-fazxidgsxcv5rxzxnkcp7q.streamlit.app/
 
 👍 Pros of Streamlit Cloud
 
